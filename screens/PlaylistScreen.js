@@ -8,13 +8,13 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
+import { PanGestureHandler } from 'react-native-gesture-handler';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 //CONTEXT
 import { usePlayListSeedContext } from '../context/playlistSeedContext';
 import { useAuthContext } from '../context/authContext';
 import { useSliderContext } from '../context/sliderContext';
-// import { usePlaylistContext } from '../context/playlistContext';
 import { usePlayListUriContext } from '../context/playlistUriContext';
 
 //COMPONENTS
@@ -70,6 +70,8 @@ const PlaylistScreen = ({ navigation }) => {
       }
     );
   }, []);
+
+
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalInfo, setModalInfo] = React.useState(null);
 
@@ -134,15 +136,7 @@ const styles = StyleSheet.create({
     height: 60,
     paddingTop: 10,
   },
-  // next: {
-  //   // borderRadius: 20,
-  //   paddingHorizontal: 20,
-  //   paddingVertical: 20,
-  //   // margin:5,
-  //   marginBottom: 50,
-  //   elevation: 2,
-  //   backgroundColor: 'rgb(209,209,214)',
-  // },
+
   navigation: {
     flexDirection: 'row',
     width: '80%',

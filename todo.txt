@@ -1,0 +1,19 @@
+align navigation arrows 
+disable login button
+REfresh app when done -> disable send button, render new refresh button
+apply SWIPE to delete from playlist
+apply color to buttons
+sliders could have colors
+
+
+
+
+SLIDER
+option 1: ACTUALLY MAKE IT WORK
+    slider position will set track ms but won't move on its own
+option 2: I HAVE FELT ENOUGH PAIN
+    start playing in the middle of the track -> no active slider
+
+
+
+look into setState extension snippets

@@ -9,34 +9,39 @@ import {
   Image,
   Button,
 } from 'react-native';
+
+// IMPORTS
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+// import Slider from '@react-native-community/slider';
+import PlaySlider from './PlaySlider';
+
 
 //CONTEXT
 import { useAuthContext } from '../context/authContext';
-// import { usePlayListUriContext } from '../context/playlistUriContext';
 
 //API
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
 
 const SongModal = (props) => {
-  // const playListUriContext = usePlayListUriContext();
   const modalVisible = props.modalVisible;
   const setModalVisible = props.setModalVisible;
-  const modalInfo = props.modalInfo; //! CONTAINS INFO ON TRACK
+  const modalInfo = props.modalInfo;
   const [isPlaying, setIsPlaying] = React.useState(false);
 
-  //API
+  // API
   const authContext = useAuthContext();
   SpotifyApi.setAccessToken(authContext.Token);
-  // const [uri, setUri] = React.useState('');
+  const [playback, setPlayback] = React.useState(0);
   let uri;
 
-  //TOGGLE PLAY
+  // //TOGGLE PLAY
 
   const startPlay = () => {
-    {console.log('uri=',uri)}
+    {
+      console.log('uri=', uri);
+    }
     SpotifyApi.play({
       uris: [String(uri)],
     }).then(
@@ -51,7 +56,10 @@ const SongModal = (props) => {
     );
   };
 
+
+
   const stopPlay = () => {
+    setIsPlaying(false);
     SpotifyApi.pause().then(
       function () {
         setIsPlaying(false);
@@ -63,10 +71,7 @@ const SongModal = (props) => {
       }
     );
   };
-  
-  const openSong =()=>{
 
-  }
 
 
   return (
@@ -103,12 +108,11 @@ const SongModal = (props) => {
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
-                    // setUri(modalInfo.uri);
-                    uri=modalInfo.uri;
+                    uri = modalInfo.uri;
                     startPlay();
                   }}
                 >
-                  <AntDesign name="caretright" size={24} color="white" />
+                  <AntDesign name="caretright" size={24} color="black" />
                 </Pressable>
               ) : (
                 <Pressable
@@ -117,9 +121,13 @@ const SongModal = (props) => {
                     stopPlay();
                   }}
                 >
-                  <Ionicons name="pause" size={23} color="white" />
+                  <Ionicons name="pause" size={23} color="black" />
                 </Pressable>
               )}
+
+              {/* SLIDER */}
+              
+              <PlaySlider duration={modalInfo.duration_ms} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
 
               {/* HIDE BUTTON */}
               <Pressable
@@ -128,7 +136,12 @@ const SongModal = (props) => {
                   stopPlay();
                 }}
               >
-                <AntDesign name="downcircleo" size={30} color="grey" style={styles.downArrow}/>
+                <AntDesign
+                  name="downcircleo"
+                  size={30}
+                  color="grey"
+                  style={styles.downArrow}
+                />
               </Pressable>
             </View>
           </View>
@@ -151,9 +164,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingTop: 40,
     paddingBottom: 80,
+    paddingHorizontal: 20,
     width: 300,
-    height: 500,
+    height: 600,
     alignItems: 'center',
+    justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -165,15 +180,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
-    borderRadius: 20,
-    paddingHorizontal: 20,
+    borderRadius: 10,
+    paddingHorizontal: 10,
     paddingVertical: 10,
     elevation: 2,
   },
 
-  buttonClose: {
-    backgroundColor: 'rgb(209,209,214)',
-  },
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
@@ -182,19 +194,23 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+    justifyContent: 'center',
   },
   songInfo: {
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+    textAlign: 'center',
   },
   infoText: {
-    marginTop:60,
+    marginTop: 60,
     alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
   },
-  downArrow:{
-    margin:50,
-  }
+  downArrow: {
+    margin: 50,
+  },
 });
 
 export default SongModal;

@@ -28,7 +28,7 @@ const SliderScreen = ({ navigation }) => {
     {/* NAVIGATION */}
     <View style={styles.navigation}>
 
-    <Pressable onPress={()=>playListReady()} style={styles.arrow}>
+    <Pressable onPress={()=>{navigation.navigate('ButtonScreen')}} style={styles.arrow}>
     <AntDesign name="arrowleft" size={24} color="black" />
     </Pressable>
 
