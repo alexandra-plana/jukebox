@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// IMPORTS
+import React from 'react';
 import {
   Alert,
   Modal,
@@ -7,15 +8,13 @@ import {
   Pressable,
   View,
   Image,
-  Button,
 } from 'react-native';
 
-// IMPORTS
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-// import Slider from '@react-native-community/slider';
-import PlaySlider from './PlaySlider';
 
+//COMPONENTS
+import PlaySlider from './PlaySlider';
 
 //CONTEXT
 import { useAuthContext } from '../context/authContext';
@@ -33,15 +32,12 @@ const SongModal = (props) => {
   // API
   const authContext = useAuthContext();
   SpotifyApi.setAccessToken(authContext.Token);
-  const [playback, setPlayback] = React.useState(0);
+
   let uri;
 
-  // //TOGGLE PLAY
+   //TOGGLE PLAY-STOP
 
   const startPlay = () => {
-    {
-      console.log('uri=', uri);
-    }
     SpotifyApi.play({
       uris: [String(uri)],
     }).then(
@@ -50,13 +46,10 @@ const SongModal = (props) => {
         console.log('Playback started');
       },
       function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
         console.log('Something went wrong!', err);
       }
     );
   };
-
-
 
   const stopPlay = () => {
     setIsPlaying(false);
@@ -66,18 +59,16 @@ const SongModal = (props) => {
         console.log('Playback stopped');
       },
       function (err) {
-        //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
         console.log('Something went wrong!', err);
       }
     );
   };
-
+  
 
 
   return (
     modalInfo && (
       <View style={styles.centeredView}>
-        {/* {console.log(modalInfo)} */}
         <Modal
           animationType="slide"
           transparent={true}
@@ -132,8 +123,8 @@ const SongModal = (props) => {
               {/* HIDE BUTTON */}
               <Pressable
                 onPress={() => {
-                  setModalVisible(!modalVisible);
                   stopPlay();
+                  setModalVisible(!modalVisible);
                 }}
               >
                 <AntDesign
@@ -159,11 +150,10 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    // margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
     paddingTop: 40,
-    paddingBottom: 80,
+    // paddingBottom: 60,
     paddingHorizontal: 20,
     width: 300,
     height: 600,
@@ -199,7 +189,6 @@ const styles = StyleSheet.create({
   songInfo: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
     textAlign: 'center',
   },
   infoText: {
@@ -209,7 +198,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   downArrow: {
-    margin: 50,
+    marginVertical: 30,
   },
 });
 

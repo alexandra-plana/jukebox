@@ -144,5 +144,3 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
-
-//!TODO SWIPE DOWN TO REFRESH
