@@ -42,36 +42,29 @@ const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
     );
   };
 
-  //TIMER
-  // const Timer = ({ duration }) => {
-    // initialize timeLeft with the seconds prop
-
-
-    const [timeLeft, setTimeLeft] = React.useState(duration);
+    // const [timeLeft, setTimeLeft] = React.useState(duration);
+    const elapsed = minutesAndSeconds(currentPosition);
+    const remaining = minutesAndSeconds(duration - currentPosition);
 
     React.useEffect(() => {
       // exit early when we reach 0
-      if (!timeLeft) return;
+      if (currentPosition>=duration) return;
 
       // save intervalId to clear the interval when the
       // component re-renders
       const intervalId = setInterval(() => {
-        setTimeLeft(timeLeft - 1000);
+        setCurrentPosition(currentPosition + 1000);
       }, 1000);
 
       // clear interval on re-render to avoid memory leaks
       return () => clearInterval(intervalId);
-      // add timeLeft as a dependency to re-rerun the effect
+      // add currentPosition as a dependency to re-rerun the effect
       // when we update it
-    }, [timeLeft]);
+    }, [currentPosition]);
 
 
   return (
     <View>
-      {/* <Timer duration={duration} /> */}
-      <Text>{minutesAndSeconds(timeLeft)}</Text>
-
-
       <Slider
         style={{ width: 200, height: 40 }}
         minimumValue={0}
@@ -86,10 +79,20 @@ const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
           console.log('value:', Math.floor(value));
         }}
       />
+      <View style={styles.textTimer}>
+        <Text>{elapsed}</Text>
+        <Text>{remaining}</Text>
+      </View>
     </View>
   );
 };
 
 export default PlaySlider;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  textTimer:{
+    flexDirection:'row',
+    justifyContent:'space-between'
+
+  }
+});
