@@ -1,8 +1,13 @@
 import { StyleSheet, Text, View, Image,Pressable } from 'react-native';
 import React from 'react';
 
-const SongPlaylistComponent = ({item}) => {
-  // console.log(.item.name);
+
+const SongPlaylistComponent = ({playList,setPlayList, item}) => {
+  // React.useEffect(()=>{
+  //   if (!playList) return;
+  //   setPlayList(playList.filter(i=>i.name!==item.name))
+  // },[playList])
+
   return (
     <View  style={styles.container}>
       <View style={styles.titleImage}>
@@ -19,8 +24,13 @@ const SongPlaylistComponent = ({item}) => {
         </View>
       </View>
       <View>
-        <Pressable onPress={()=>{console.log(item.name)}}>
-
+        <Pressable onPress={()=>{
+          console.log(item.name);
+          // React.useEffect(()=>{
+          //   setPlayList(playList.filter(i=>i.name!==item.name))
+          // },[playList])
+          deleteFromPlayList(item);}
+        }>
         <Text>x</Text>
         </Pressable>
       </View>
