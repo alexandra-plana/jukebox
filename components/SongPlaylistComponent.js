@@ -25,7 +25,7 @@ export default SongPlaylistComponent;
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 65,
     padding: 10,
     borderRadius: 5,
     marginVertical: 3,
@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     overflow: 'hidden',
     flexDirection: 'row',
+    backgroundColor:'#f2f2f7',
+    borderRadius:5,
   },
   textContainer: {
     marginLeft: 10,
@@ -42,6 +44,6 @@ const styles = StyleSheet.create({
   },
   titleImage: {
     flexDirection: 'row',
-    flex: 2,
+    alignItems:'center', 
   },
 });

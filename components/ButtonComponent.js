@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ButtonComponent = ({ genre, selected }) => {
   return (
@@ -8,7 +7,7 @@ const ButtonComponent = ({ genre, selected }) => {
       <View style={styles.button}>
         <Text>{genre}</Text>
       </View>
-      {selected && <View style={styles.overlay}/>}
+      {selected && <View style={styles.overlay} />}
     </>
   );
 };
@@ -19,16 +18,15 @@ const styles = StyleSheet.create({
   button: {
     height: 45,
     width: 95,
-    padding:6,
+    padding: 6,
     backgroundColor: 'rgb(209,209,214)',
     borderRadius: 5,
-    marginHorizontal:5,
-    marginVertical:7,
+    marginHorizontal: 5,
+    marginVertical: 7,
     alignContent: 'center',
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    
   },
   overlay: {
     backgroundColor: 'rgba(0,0,0,0.4)',
@@ -36,9 +34,9 @@ const styles = StyleSheet.create({
     height: 45,
     width: 95,
     borderRadius: 5,
-    marginHorizontal:5,
-    marginVertical:7,
-    top:0,
-    left:0
+    marginHorizontal: 5,
+    marginVertical: 7,
+    top: 0,
+    left: 0,
   },
 });

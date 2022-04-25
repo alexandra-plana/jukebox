@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Slider from '@react-native-community/slider';
 import { useSliderContext } from '../../context/sliderContext';
+import { styles } from './sliderStyles';
 
 const SliderEnergy = () => {
  
@@ -27,10 +28,3 @@ const SliderEnergy = () => {
 
 export default SliderEnergy
 
-const styles = StyleSheet.create({
-    container:{
-        justifyContent:'center',
-        alignItems:'center',
-        marginVertical:15,
-    }
-})

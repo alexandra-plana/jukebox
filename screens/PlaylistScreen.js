@@ -4,8 +4,9 @@ import {
   ScrollView,
   Pressable,
   TouchableOpacity,
+  Text,
 } from 'react-native';
-import { Swipeable } from 'react-native-gesture-handler';
+// import { Swipeable, Animated } from 'react-native-gesture-handler';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 //CONTEXT
@@ -17,6 +18,8 @@ import { usePlayListUriContext } from '../context/playlistUriContext';
 //COMPONENTS
 import SongPlaylistComponent from '../components/SongPlaylistComponent';
 import SongModal from '../components/SongModal';
+import SwipableSong from '../components/SwipableSong';
+import { FlatList } from 'react-native-gesture-handler';
 
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
@@ -63,30 +66,28 @@ const PlaylistScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalInfo, setModalInfo] = React.useState(null);
 
+  const renderItem = ({ item, key }) => {
+    recommendationsUri.push(item.uri);
+
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          setModalVisible(true);
+          setModalInfo(item);
+        }}
+      >
+        <SwipableSong item={item} deleteSong={deleteSong} />
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {playList.map((item, index) => {
-          recommendationsUri.push(item.uri);
-          return (
-            <Swipeable
-              key={index}
-              onActivated={() => {
-                deleteSong(item);
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => {
-                  setModalVisible(true);
-                  setModalInfo(item);
-                }}
-              >
-                <SongPlaylistComponent deleteSong={deleteSong} item={item} />
-              </TouchableOpacity>
-            </Swipeable>
-          );
-        })}
-      </ScrollView>
+      <FlatList
+        data={playList}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      ></FlatList>
 
       <SongModal
         modalInfo={modalInfo}
@@ -123,6 +124,8 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginHorizontal: 20,
     flex: 1,
+    // backgroundColor: '#d0d0c0',
+
   },
   btn: {
     height: 60,

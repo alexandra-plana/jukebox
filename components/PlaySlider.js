@@ -31,7 +31,6 @@ const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
     // Seek To Position In Currently Playing Track
     SpotifyApi.seek(positionMs).then(
       function () {
-        console.log('Seek to ' + positionMs);
         console.log('mins and sec', minutesAndSeconds(positionMs));
       },
       function (err) {
@@ -45,7 +44,6 @@ const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
   React.useEffect(() => {
     // exit early when we reach 0
     if (elapsed >= duration || !isPlaying) return;
-  
     // save intervalId to clear the interval when the
     // component re-renders
     const intervalId = setInterval(() => {

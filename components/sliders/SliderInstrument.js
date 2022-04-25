@@ -1,16 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import Slider from '@react-native-community/slider'
+import { Text, View } from 'react-native';
+import React from 'react';
+import Slider from '@react-native-community/slider';
 import { useSliderContext } from '../../context/sliderContext';
-
+import { styles } from './sliderStyles';
 
 const SliderInstrument = () => {
-
-  const sliderContext=useSliderContext();
+  const sliderContext = useSliderContext();
 
   return (
-    <View style= {styles.container}>
-      <Text>intrument</Text>
+    <View style={styles.container}>
+      <Text>instrument</Text>
 
       <Slider
         style={{ width: 200, height: 40 }}
@@ -18,19 +17,13 @@ const SliderInstrument = () => {
         maximumValue={1}
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
-        value={.5}
-        onValueChange={value=>sliderContext.Instrument=parseFloat(value.toFixed(1))}
+        value={0.5}
+        onValueChange={(value) =>
+          (sliderContext.Instrument = parseFloat(value.toFixed(1)))
+        }
       />
     </View>
-  )
-}
+  );
+};
 
-export default SliderInstrument
-
-const styles = StyleSheet.create({
-    container:{
-        justifyContent:'center',
-        alignItems:'center',
-        marginVertical:15,
-    }
-})
+export default SliderInstrument;

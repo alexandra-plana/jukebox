@@ -18,14 +18,14 @@ const SpotifyApi = new SpotifyWebApi();
 
 export default function DoneScreen() {
   const authContext = useAuthContext();
-  const playListUriContext=usePlayListUriContext();
+  const playListUriContext = usePlayListUriContext();
   SpotifyApi.setAccessToken(authContext.Token);
-  const [input, onChangeInput] = React.useState(null);
+  const [input, setInput] = React.useState(null);
 
   const sendPlaylist = () => {
     console.log('sending playlist');
 
-    SpotifyApi.createPlaylist(input, {  
+    SpotifyApi.createPlaylist(input, {
       description: 'created with jukebox',
       public: true,
     })
@@ -41,12 +41,14 @@ export default function DoneScreen() {
         }
       )
       .then(function (id) {
+        setInput('');
         return SpotifyApi.addTracksToPlaylist(id, playListUriContext.Uris);
+
+      })
+      .catch((err) => {
+        console.error(err.message);
       });
   };
-
-
-
 
   return (
     <View style={styles.container}>
@@ -56,7 +58,7 @@ export default function DoneScreen() {
             <Text style={styles.titleText}>Done</Text>
             <TextInput
               style={styles.input}
-              onChangeText={onChangeInput}
+              onChangeText={setInput}
               value={input}
               placeholder="playlist name"
             />

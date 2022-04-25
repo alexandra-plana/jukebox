@@ -51,13 +51,12 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
     justifyContent:'space-between',
-    paddingVertical:60,
-  },
-  sliders:{
+    paddingTop:200,
   },
   navigation:{
     flexDirection:'row',
     width:'80%',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    paddingBottom:60,
   }
 });
