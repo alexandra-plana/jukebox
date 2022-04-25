@@ -1,11 +1,10 @@
+// eslint-disable-next-line
 import {
   StyleSheet,
   Text,
   View,
-  Pressable,
   Image,
   TextInput,
-  KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,

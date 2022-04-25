@@ -1,49 +1,39 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  Pressable,
-
-} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 import { useAuthContext } from '../context/authContext';
 
 import Slider from '@react-native-community/slider';
 
-
-//API 
+//API
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
 
-
-
 //HELPER FUNCS
 
-const minutesAndSeconds = (position) => [ // position is given in ms 
-Math.floor(position/(1000*60))%60 + ":" + Math.floor(position/1000)%60
+const minutesAndSeconds = (position) => [
+  // position is given in ms
+  (Math.floor(position / (1000 * 60)) % 60) +
+    ':' +
+    (Math.floor(position / 1000) % 60).toString().padStart(2,'0'),
 ];
 
-const PlaySlider = ({duration,isPlaying, setIsPlaying}) => {
+const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
   //API;
   const authContext = useAuthContext();
   SpotifyApi.setAccessToken(authContext.Token);
   const [currentPosition, setCurrentPosition] = React.useState(0);
-  const [timerStarted,setTimerStarted] = React.useState(false);
-  
-  React.useEffect(()=>{
-    
-  }
-  ,[])
+
+  React.useEffect(() => {}, []);
 
   // REQUEST POSITION CHANGE
 
   const seekRequest = (positionMs) => {
     // Seek To Position In Currently Playing Track
-    console.log('positionMs in seek',positionMs)
+    console.log('positionMs in seek', positionMs);
     SpotifyApi.seek(positionMs).then(
       function () {
         console.log('Seek to ' + positionMs);
-        console.log('mins and sec',minutesAndSeconds(positionMs))
+        console.log('mins and sec', minutesAndSeconds(positionMs));
       },
       function (err) {
         //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
@@ -52,19 +42,35 @@ const PlaySlider = ({duration,isPlaying, setIsPlaying}) => {
     );
   };
 
-//  SET INTERVAL FOR CURRENT POSITION
+  //TIMER
+  // const Timer = ({ duration }) => {
+    // initialize timeLeft with the seconds prop
 
-isPlaying && !timerStarted && setInterval(()=>{
-  isPlaying && !timerStarted && setCurrentPosition(Math.floor(currentPosition)+1000);
-  isPlaying && !timerStarted && console.log('current position in setInterval: ',currentPosition);
-  setTimerStarted(true)
-  },1000)
 
+    const [timeLeft, setTimeLeft] = React.useState(duration);
+
+    React.useEffect(() => {
+      // exit early when we reach 0
+      if (!timeLeft) return;
+
+      // save intervalId to clear the interval when the
+      // component re-renders
+      const intervalId = setInterval(() => {
+        setTimeLeft(timeLeft - 1000);
+      }, 1000);
+
+      // clear interval on re-render to avoid memory leaks
+      return () => clearInterval(intervalId);
+      // add timeLeft as a dependency to re-rerun the effect
+      // when we update it
+    }, [timeLeft]);
 
 
   return (
     <View>
-      
+      {/* <Timer duration={duration} /> */}
+      <Text>{minutesAndSeconds(timeLeft)}</Text>
+
 
       <Slider
         style={{ width: 200, height: 40 }}
@@ -75,9 +81,9 @@ isPlaying && !timerStarted && setInterval(()=>{
         value={currentPosition} //?
         onSlidingComplete={(value) => {
           seekRequest(Math.floor(value));
-          setCurrentPosition(Math.floor(value))
-          
-          console.log('value:',Math.floor(value))
+          setCurrentPosition(Math.floor(value));
+
+          console.log('value:', Math.floor(value));
         }}
       />
     </View>
