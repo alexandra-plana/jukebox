@@ -1,14 +1,11 @@
 import {
-  InteractionManager,
   StyleSheet,
-  Text,
   View,
-  Button,
   ScrollView,
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import { PanGestureHandler } from 'react-native-gesture-handler';
+import { Swipeable } from 'react-native-gesture-handler';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 //CONTEXT
@@ -20,12 +17,6 @@ import { usePlayListUriContext } from '../context/playlistUriContext';
 //COMPONENTS
 import SongPlaylistComponent from '../components/SongPlaylistComponent';
 import SongModal from '../components/SongModal';
-// import {
-//   SwipeItem,
-//   SwipeButtonsContainer,
-//   SwipeProvider,
-// } from 'react-native-swipe-item';
-// import ModalTest from '../components/';
 
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
@@ -38,11 +29,9 @@ const PlaylistScreen = ({ navigation }) => {
   const authContext = useAuthContext();
   SpotifyApi.setAccessToken(authContext.Token);
   const [playList, setPlayList] = React.useState([]);
-  // const [recommendationsUri,setRecommendationsUri]=React.useState()
 
   let recommendations = [];
-  let recommendationsUri=[];
-
+  let recommendationsUri = [];
 
   // GET PLAYLIST FROM API
   React.useEffect(() => {
@@ -67,34 +56,37 @@ const PlaylistScreen = ({ navigation }) => {
     );
   }, []);
 
+  const deleteSong = (item) => {
+    setPlayList(playList.filter((i) => i.name !== item.name));
+  };
+
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalInfo, setModalInfo] = React.useState(null);
 
   return (
     <View style={styles.container}>
-      {/* map through playList array and display song components */}
-      
-          <ScrollView>
-            {playList.map((item, index) => {
-              recommendationsUri.push(item.uri);
-              return (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => {
-                    setModalVisible(true);
-                    setModalInfo(item);
-                  }}
-                  // onLongPress={()=>{
-                  //   setPlayList(playList.filter(i=>i.name!==item.name))
-                  // }}
-                >
-                  <SongPlaylistComponent playList={playList} setPlayList={setPlayList} item={item} />
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
-        
-      
+      <ScrollView>
+        {playList.map((item, index) => {
+          recommendationsUri.push(item.uri);
+          return (
+            <Swipeable
+              key={index}
+              onActivated={() => {
+                deleteSong(item);
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(true);
+                  setModalInfo(item);
+                }}
+              >
+                <SongPlaylistComponent deleteSong={deleteSong} item={item} />
+              </TouchableOpacity>
+            </Swipeable>
+          );
+        })}
+      </ScrollView>
 
       <SongModal
         modalInfo={modalInfo}
@@ -114,7 +106,6 @@ const PlaylistScreen = ({ navigation }) => {
             playListUriContext.Uris = [...recommendationsUri]; // set playlist uri context
             navigation.replace('DoneScreen');
           }}
-          
         >
           <AntDesign name="arrowright" size={24} color="black" />
         </Pressable>
@@ -134,7 +125,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   btn: {
-    // paddingTop:90,
     height: 60,
     paddingTop: 10,
   },

@@ -1,15 +1,9 @@
-import { StyleSheet, Text, View, Image,Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 
-
-const SongPlaylistComponent = ({playList,setPlayList, item}) => {
-  // React.useEffect(()=>{
-  //   if (!playList) return;
-  //   setPlayList(playList.filter(i=>i.name!==item.name))
-  // },[playList])
-
+const SongPlaylistComponent = ({ item }) => {
   return (
-    <View  style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.titleImage}>
         <Image
           source={{
@@ -19,20 +13,9 @@ const SongPlaylistComponent = ({playList,setPlayList, item}) => {
           }}
         ></Image>
         <View numberOfLines={1} style={styles.textContainer}>
-            <Text style={styles.titleText}>{item.name}</Text>
+          <Text style={styles.titleText}>{item.name}</Text>
           <Text>{item.artists[0].name}</Text>
         </View>
-      </View>
-      <View>
-        <Pressable onPress={()=>{
-          console.log(item.name);
-          // React.useEffect(()=>{
-          //   setPlayList(playList.filter(i=>i.name!==item.name))
-          // },[playList])
-          deleteFromPlayList(item);}
-        }>
-        <Text>x</Text>
-        </Pressable>
       </View>
     </View>
   );
@@ -52,13 +35,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textContainer: {
-    marginLeft:10
+    marginLeft: 10,
   },
   titleText: {
     fontWeight: '600',
   },
-  titleImage:{
-    flexDirection:'row',
-    flex:2,
-  }
+  titleImage: {
+    flexDirection: 'row',
+    flex: 2,
+  },
 });
