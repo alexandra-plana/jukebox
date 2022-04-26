@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable,View } from 'react-native';
+import { StyleSheet, Pressable, View } from 'react-native';
 import React from 'react';
 import { Swipeable } from 'react-native-gesture-handler';
 import SongPlaylistComponent from './SongPlaylistComponent';
@@ -14,11 +14,8 @@ const SwipableSong = ({ item, deleteSong }) => {
         onPress={() => {
           deleteSong(item);
         }}
-      > 
-   
-
-      <Feather name="x" size={30} color="white" />
-
+      >
+        <Feather name="x" size={30} color="white" />
       </Pressable>
     );
   };

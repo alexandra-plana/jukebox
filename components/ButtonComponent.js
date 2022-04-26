@@ -5,9 +5,9 @@ const ButtonComponent = ({ genre, selected }) => {
   return (
     <>
       <View style={styles.button}>
+        {selected && <View style={styles.overlay} />}
         <Text>{genre}</Text>
       </View>
-      {selected && <View style={styles.overlay} />}
     </>
   );
 };
@@ -15,28 +15,37 @@ const ButtonComponent = ({ genre, selected }) => {
 export default ButtonComponent;
 
 const styles = StyleSheet.create({
-  button: {
+
+  button:{
+    backgroundColor: 'white',
+    marginTop:30,
+    borderRadius:20,
     height: 45,
     width: 95,
     padding: 6,
-    backgroundColor: 'rgb(209,209,214)',
-    borderRadius: 5,
     marginHorizontal: 5,
-    marginVertical: 7,
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 5,
   },
+  
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: 'rgba(255, 149, 0,0.9)',
     position: 'absolute',
     height: 45,
     width: 95,
-    borderRadius: 5,
+    borderRadius: 20,
     marginHorizontal: 5,
-    marginVertical: 7,
-    top: 0,
-    left: 0,
+
+ 
   },
 });

@@ -8,7 +8,10 @@ import ButtonContainer from '../components/ButtonContainer';
 export default function ButtonScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={{ marginTop: 200 }}>add up to 5</Text>
+      <View style={styles.text}>
+      <Text style={{fontWeight:'600', fontSize:30}}>Genres</Text>
+      <Text >add up to 5</Text>
+      </View>
       <ButtonContainer  />
       <View style={styles.navigation}>
         <Pressable onPress={() => navigation.navigate('SliderScreen')}>
@@ -25,14 +28,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   buttonContainer: {
-    marginTop:200,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    // marginHorizontal: 50,
   },
   navigation: {
     paddingBottom: 60,
   },
+  text:{
+    marginTop:100,
+    height:100,
+    justifyContent:'space-between',
+    alignItems:'center',
+  }
 });

@@ -16,7 +16,6 @@ import { useSliderContext } from '../context/sliderContext';
 import { usePlayListUriContext } from '../context/playlistUriContext';
 
 //COMPONENTS
-import SongPlaylistComponent from '../components/SongPlaylistComponent';
 import SongModal from '../components/SongModal';
 import SwipableSong from '../components/SwipableSong';
 import { FlatList } from 'react-native-gesture-handler';
@@ -122,19 +121,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 20,
+    paddingTop:70,
     flex: 1,
     maxWidth:'100%'
-
-  },
-  btn: {
-    height: 60,
-    paddingTop: 10,
   },
 
   navigation: {
     flexDirection: 'row',
     width: '80%',
-    paddingVertical: 40,
+    // paddingTop: 20,
+    paddingBottom:60,
     justifyContent: 'space-between',
   },
 });

@@ -16,6 +16,7 @@ const SliderScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+       <Text style={{fontWeight:'600', fontSize:30}}>Mood</Text>
     <View style={styles.sliders}>
       <SliderProvider>
         <SliderPopular />
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
     justifyContent:'space-between',
-    paddingTop:200,
+    paddingTop:100,
   },
   navigation:{
     flexDirection:'row',

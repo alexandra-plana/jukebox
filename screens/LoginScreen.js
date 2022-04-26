@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { ResponseType, useAuthRequest } from 'expo-auth-session';
-import {StyleSheet, View, Text, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { useAuthContext } from '../context/authContext';
 
@@ -31,7 +31,7 @@ const discovery = {
 
 export default function LoginScreen({ navigation }) {
   const authContext = useAuthContext();
-  const [request, response, promptAsync] = useAuthRequest(
+  const [, response, promptAsync] = useAuthRequest(
     {
       responseType: ResponseType.Token,
       clientId: authData.client_id,
@@ -72,7 +72,7 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.title}>JUKE</Text>
           <Text style={styles.title}>BOX</Text>
 
-            {/* request API login */}
+          {/* request API login */}
           <Pressable
             onPress={() => {
               promptAsync();
@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
     height: 60,
   },
   loginContainer: {
-
     marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',

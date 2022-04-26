@@ -82,45 +82,43 @@ const SongModal = (props) => {
                 <Image
                   source={{
                     uri: modalInfo.album.images[0].url,
-                    height: 200,
-                    width: 200,
+                    height: 250,
+                    width: 250,
                   }}
                 />
                 <View style={styles.infoText}>
-                  <Text style={{ fontWeight: '600' }}>{modalInfo.name}</Text>
-                  <Text>{modalInfo.artists[0].name}</Text>
+                  <Text style={{ fontWeight: '600' ,fontSize:24}}>{modalInfo.name}</Text>
+                  <Text style={{fontSize:18}}>{modalInfo.artists[0].name}</Text>
                 </View>
               </View>
 
-              {/* PLAY - STOP BUTTON BUTTON */}
-              {!isPlaying ? (
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => {
-                    uri = modalInfo.uri;
-                    startPlay();
-                  }}
-                >
-                  <AntDesign name="caretright" size={24} color="black" />
-                </Pressable>
-              ) : (
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => {
-                    stopPlay();
-                  }}
-                >
-                  <Ionicons name="pause" size={23} color="black" />
-                </Pressable>
-              )}
-
               {/* SLIDER */}
-
               <PlaySlider
                 duration={modalInfo.duration_ms}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
               />
+              {/* PLAY - STOP BUTTON BUTTON */}
+              {!isPlaying ? (
+                <Pressable
+                  style={styles.buttonPlayPause}
+                  onPress={() => {
+                    uri = modalInfo.uri;
+                    startPlay();
+                  }}
+                >
+                  <AntDesign name="caretright" size={35} color="black" />
+                </Pressable>
+              ) : (
+                <Pressable
+                  style={styles.buttonPlayPause}
+                  onPress={() => {
+                    stopPlay();
+                  }}
+                >
+                  <Ionicons name="pause" size={33} color="black" />
+                </Pressable>
+              )}
 
               {/* HIDE BUTTON */}
               <Pressable
@@ -132,7 +130,7 @@ const SongModal = (props) => {
                 <AntDesign
                   name="downcircleo"
                   size={30}
-                  color="grey"
+                  // color="grey"
                   style={styles.downArrow}
                 />
               </Pressable>
@@ -145,6 +143,7 @@ const SongModal = (props) => {
 };
 
 const styles = StyleSheet.create({
+  buttonPlayPause:{},
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -155,7 +154,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     paddingTop: 40,
-    // paddingBottom: 60,
     paddingHorizontal: 20,
     width: 300,
     height: 600,
@@ -166,16 +164,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 5,
     justifyContent: 'space-between',
-  },
-  button: {
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    elevation: 2,
   },
 
   textStyle: {
@@ -183,24 +175,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-    justifyContent: 'center',
-  },
+
   songInfo: {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
   },
   infoText: {
-    marginTop: 60,
+    marginTop: 40,
+    marginBottom:20,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
   },
   downArrow: {
     marginVertical: 30,
+    color:'#aeaeb2',
   },
 });
 

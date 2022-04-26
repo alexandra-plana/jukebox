@@ -12,10 +12,10 @@ const SliderEnergy = () => {
       <Text>energy</Text>
 
       <Slider
-        style={{ width: 200, height: 40 }}
+        style={styles.slider}
         minimumValue={0}
         maximumValue={1}
-        minimumTrackTintColor="#FFFFFF"
+        minimumTrackTintColor="#ff9500"
         maximumTrackTintColor="#000000"
         value={0.5}
         onValueChange={(value) =>

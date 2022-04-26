@@ -61,7 +61,7 @@ const PlaySlider = ({ duration, isPlaying, setIsPlaying }) => {
         style={{ width: 200, height: 40 }}
         minimumValue={0}
         maximumValue={duration}
-        minimumTrackTintColor="#FF5733"
+        minimumTrackTintColor="#ff9500"
         maximumTrackTintColor="#000000"
         value={elapsed}
         onSlidingComplete={(value) => {

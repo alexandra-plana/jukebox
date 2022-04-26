@@ -85,12 +85,13 @@ export default ButtonContainer;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    paddingTop: 200,
+    paddingTop: 60,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    paddingHorizontal: 40,
   },
 });
 
