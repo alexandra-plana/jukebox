@@ -121,16 +121,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 20,
-    paddingTop:70,
+    paddingTop: 70,
     flex: 1,
-    maxWidth:'100%'
+    maxWidth: '100%',
   },
 
   navigation: {
     flexDirection: 'row',
-    width: '80%',
-    // paddingTop: 20,
-    paddingBottom:60,
+    width: '90%',
+
+    paddingBottom: 60,
     justifyContent: 'space-between',
   },
 });

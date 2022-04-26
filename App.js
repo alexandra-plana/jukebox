@@ -19,6 +19,9 @@ import { PlayListSeedProvider } from './context/playlistSeedContext';
 const Stack = createStackNavigator();
 
 export default function App() {
+
+
+
   return (
     <AuthProvider>
       <PlayListSeedProvider>
