@@ -12,12 +12,14 @@ import {
 
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
 //COMPONENTS
 import PlaySlider from './PlaySlider';
 
 //CONTEXT
 import { useAuthContext } from '../context/authContext';
+import AutoText from './AutoText';
 
 //API
 const SpotifyWebApi = require('spotify-web-api-node');
@@ -87,8 +89,17 @@ const SongModal = (props) => {
                   }}
                 />
                 <View style={styles.infoText}>
-                  <Text style={{ fontWeight: '600' ,fontSize:24}}>{modalInfo.name}</Text>
-                  <Text style={{fontSize:18}}>{modalInfo.artists[0].name}</Text>
+                  <AutoText>
+                    <Text
+                      numberOfLines={1}
+                      style={{ fontWeight: '600', fontSize: 24 }}
+                    >
+                      {modalInfo.name}
+                    </Text>
+                  </AutoText>
+                  <Text style={{ fontSize: 18 }}>
+                    {modalInfo.artists[0].name}
+                  </Text>
                 </View>
               </View>
 
@@ -127,10 +138,9 @@ const SongModal = (props) => {
                   setModalVisible(!modalVisible);
                 }}
               >
-                <AntDesign
-                  name="downcircleo"
-                  size={30}
-                  // color="grey"
+                <EvilIcons
+                  name="chevron-down"
+                  size={70}
                   style={styles.downArrow}
                 />
               </Pressable>
@@ -143,7 +153,7 @@ const SongModal = (props) => {
 };
 
 const styles = StyleSheet.create({
-  buttonPlayPause:{},
+  buttonPlayPause: {},
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -182,15 +192,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   infoText: {
-    marginTop: 40,
-    marginBottom:20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+    justifyContent: 'flex-start',
   },
   downArrow: {
-    marginVertical: 30,
-    color:'#aeaeb2',
+    marginVertical: 10,
+    color: '#aeaeb2',
   },
 });
 

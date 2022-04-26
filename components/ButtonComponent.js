@@ -13,6 +13,8 @@ const ButtonComponent = ({ genre, selected }) => {
 };
 
 export default ButtonComponent;
+//!TODO reduce padding btw pic and name
+//TODOapp padding btw somg title
 
 const styles = StyleSheet.create({
 

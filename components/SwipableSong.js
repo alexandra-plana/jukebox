@@ -34,11 +34,11 @@ export default SwipableSong;
 const styles = StyleSheet.create({
   deleteBox: {
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#ff9500',
     justifyContent: 'center',
     width: 100,
-    height: 64,
-    marginTop: 4,
+    height: 60,
+    marginTop: 5,
     marginLeft: 10,
     borderRadius: 5,
   },

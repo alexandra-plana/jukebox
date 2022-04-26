@@ -8,6 +8,7 @@ import LoginScreen from './screens/LoginScreen';
 import PlaylistScreen from './screens/PlaylistScreen';
 import ButtonScreen from './screens/ButtonScreen';
 import SliderScreen from './screens/SliderScreen';
+import SendScreen from './screens/SendScreen';
 import DoneScreen from './screens/DoneScreen';
 //CONTEXT PROVIDERS
 import { AuthProvider } from './context/authContext';
@@ -26,11 +27,10 @@ export default function App() {
             <NavigationContainer>
               <Stack.Navigator>
                 <Stack.Screen
-                  name="Login"
+                  name="LoginScreen"
                   component={LoginScreen}
                   options={{ headerShown: false }}
                 />
-
                 <Stack.Screen
                   name="ButtonScreen"
                   component={ButtonScreen}
@@ -44,6 +44,11 @@ export default function App() {
                 <Stack.Screen
                   name="PlaylistScreen"
                   component={PlaylistScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="SendScreen"
+                  component={SendScreen}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen

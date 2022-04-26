@@ -12,8 +12,8 @@ const SongPlaylistComponent = ({ item }) => {
             width: 60,
           }}
         ></Image>
-        <View numberOfLines={1} style={styles.textContainer}>
-          <Text style={styles.titleText}>{item.name}</Text>
+        <View  style={styles.textContainer}>
+          <Text numberOfLines={1} style={styles.titleText}>{item.name}</Text>
           <Text>{item.artists[0].name}</Text>
         </View>
       </View>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     maxWidth:'100%',
   },
   textContainer: {
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   titleText: {
     fontWeight: '600',

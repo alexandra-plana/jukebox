@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }) {
       const { access_token } = response.params;
       if (access_token) {
         authContext.Token = access_token;
-        navigation.navigate('ButtonScreen');
+        navigation.replace('ButtonScreen');
       }
     }
   }, [response]);

@@ -1,111 +1,73 @@
-// eslint-disable-next-line
+
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
-  Image,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-  TouchableOpacity,
+  StyleSheet,
+  Animated,
+  Pressable,
+  Text,
+  Easing,
 } from 'react-native';
-import React from 'react';
-import { useAuthContext } from '../context/authContext';
-import { usePlayListUriContext } from '../context/playlistUriContext';
+//ICON
+import { AntDesign } from '@expo/vector-icons';
 
-const SpotifyWebApi = require('spotify-web-api-node');
-const SpotifyApi = new SpotifyWebApi();
-
-export default function DoneScreen() {
-  const authContext = useAuthContext();
-  const playListUriContext = usePlayListUriContext();
-  SpotifyApi.setAccessToken(authContext.Token);
-  const [input, setInput] = React.useState(null);
-
-  const sendPlaylist = () => {
-    console.log('sending playlist');
-
-    SpotifyApi.createPlaylist(input, {
-      description: 'created with jukebox',
-      public: true,
+const DoneScreen = ({ navigation }) => {
+  const animation = useState(new Animated.Value(0))[0];
+  const CallAnimation = () => {
+    animation.setValue(0);
+    // Animated.loop(
+    Animated.timing(animation, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+      easing: Easing.linear,
     })
-      .then(
-        function (data) {
-          let playlistId = data.body.id;
-          console.log('Created playlist!', playlistId);
-          return data.body.id;
-        },
-        function (err) {
-          console.log('Something went wrong! Done Screen', err);
-          throw new Error(err.message);
-        }
-      )
-      .then(function (id) {
-        setInput(''); //!TODO: clean up 
-        return SpotifyApi.addTracksToPlaylist(id, playListUriContext.Uris);
-
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
+    // ).start()
   };
+//   useEffect(() => {
+//     CallAnimation();
+//   }, []);
+  const RotateData = animation.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.center}>
-          <View styles={styles.titleContainer}>
-            <Text style={styles.titleText}>Done</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setInput}
-              value={input}
-              placeholder="playlist name"
-            />
-          </View>
-
-          <View>
-            <TouchableOpacity onPress={() => sendPlaylist()}>
-              <Image
-                style={styles.logo}
-                source={require('../assets/spotify-icon-black.png')}
-              ></Image>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
+        <Text style={styles.titleText}>Done</Text>
+      <Animated.View style={{ transform: [{ rotate: RotateData }] }}>
+        <Pressable onPress={() => navigation.replace('LoginScreen')} style={styles.rotate}>
+          <Text>
+            <AntDesign name="reload1" color={'#ff9500'} size={70} style={styles.spinner}/>
+           
+          </Text>
+        </Pressable>
+      </Animated.View>
+      
     </View>
   );
-}
-
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  center: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  titleText: {
-    justifyContent: 'center',
-    textAlign: 'center',
+    titleText: {
     fontSize: 100,
-    paddingTop: 100,
+    paddingBottom:100,
+
   },
-  titleContainer: {
+  rotate:{
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  logo: {
-    width: 70,
-    height: 70,
 
-    marginVertical: 70,
   },
-  input: {
-    fontSize: 50,
-    color: 'rgb(174,174,178)',
-  },
+  spinner:{
+    position:'absolute',
+    bottom:60,
+  }
+
+
 });
+export default DoneScreen;

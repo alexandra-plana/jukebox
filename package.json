@@ -30,6 +30,7 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-swipe-item": "^0.6.0",
+    "react-native-text-ticker": "^1.14.0",
     "react-native-web": "0.17.1",
     "react-navigation-stack": "^2.10.4",
     "spotify-web-api-js": "^1.5.2",

@@ -104,7 +104,7 @@ const PlaylistScreen = ({ navigation }) => {
         <Pressable
           onPress={() => {
             playListUriContext.Uris = [...recommendationsUri]; // set playlist uri context
-            navigation.replace('DoneScreen');
+            navigation.replace('SendScreen');
           }}
         >
           <AntDesign name="arrowright" size={24} color="black" />
