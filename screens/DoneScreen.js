@@ -31,7 +31,7 @@ export default function DoneScreen() {
     })
       .then(
         function (data) {
-          playlistId = data.body.id;
+          let playlistId = data.body.id;
           console.log('Created playlist!', playlistId);
           return data.body.id;
         },
@@ -41,7 +41,7 @@ export default function DoneScreen() {
         }
       )
       .then(function (id) {
-        setInput('');
+        setInput(''); //!TODO: clean up 
         return SpotifyApi.addTracksToPlaylist(id, playListUriContext.Uris);
 
       })
@@ -89,11 +89,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleText: {
-    // fontWeight:'900',
     justifyContent: 'center',
     textAlign: 'center',
     fontSize: 100,
-    // fontWeight:'700',
     paddingTop: 100,
   },
   titleContainer: {

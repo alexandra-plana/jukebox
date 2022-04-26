@@ -1,7 +1,10 @@
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Pressable,View } from 'react-native';
 import React from 'react';
 import { Swipeable } from 'react-native-gesture-handler';
 import SongPlaylistComponent from './SongPlaylistComponent';
+
+//ICON
+import { Feather } from '@expo/vector-icons';
 
 const SwipableSong = ({ item, deleteSong }) => {
   const renderLeftActions = () => {
@@ -11,7 +14,12 @@ const SwipableSong = ({ item, deleteSong }) => {
         onPress={() => {
           deleteSong(item);
         }}
-      ></Pressable>
+      > 
+   
+
+      <Feather name="x" size={30} color="white" />
+
+      </Pressable>
     );
   };
 

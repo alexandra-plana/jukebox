@@ -1,18 +1,25 @@
 import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { ResponseType, useAuthRequest } from 'expo-auth-session';
-import { Button, StyleSheet, View, Text, Image, Pressable } from 'react-native';
+import {StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { useAuthContext } from '../context/authContext';
+
+// import {CLIENT_ID,REDIRECT_URI} from 'react-native-dotenv'
 
 const authData = {
   client_id: '3448de32fc284d9d953165c8f73d89c7',
   redirectUri: 'exp://192.168.1.153:19000',
 };
 
+// const authData = {
+//   client_id:CLIENT_ID,
+//   redirectUri:REDIRECT_URI,
+// };
+
 // import SpotifyWebApi from '../../client/src';
-const SpotifyWebApi = require('spotify-web-api-node');
-const SpotifyApi = new SpotifyWebApi();
+// const SpotifyWebApi = require('spotify-web-api-node');
+// const SpotifyApi = new SpotifyWebApi();
 
 WebBrowser.maybeCompleteAuthSession();
 

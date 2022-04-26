@@ -35,7 +35,7 @@ const SongModal = (props) => {
 
   let uri;
 
-   //TOGGLE PLAY-STOP
+  //TOGGLE PLAY-STOP
 
   const startPlay = () => {
     SpotifyApi.play({
@@ -63,8 +63,6 @@ const SongModal = (props) => {
       }
     );
   };
-  
-
 
   return (
     modalInfo && (
@@ -117,8 +115,12 @@ const SongModal = (props) => {
               )}
 
               {/* SLIDER */}
-              
-              <PlaySlider duration={modalInfo.duration_ms} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
+
+              <PlaySlider
+                duration={modalInfo.duration_ms}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+              />
 
               {/* HIDE BUTTON */}
               <Pressable

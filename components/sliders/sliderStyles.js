@@ -3,8 +3,12 @@ import React from 'react'
 
 export const styles = StyleSheet.create({
     container:{
-        justifyContent:'center',
-        alignItems:'center',
+        // justifyContent:'space-around',
+        // alignItems:'center',
         marginVertical:15,
-    }
+   
+
+    },
+
+
 })

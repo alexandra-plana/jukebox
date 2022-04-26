@@ -121,10 +121,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 60,
     marginHorizontal: 20,
     flex: 1,
-    // backgroundColor: '#d0d0c0',
+    maxWidth:'100%'
 
   },
   btn: {
