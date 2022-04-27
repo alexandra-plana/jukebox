@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    // backgroundColor:'rgba(142, 142, 147,0.3)'
   },
   modalView: {
     backgroundColor: 'white',

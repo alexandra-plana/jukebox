@@ -73,7 +73,6 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>JUKE</Text>
           <Text style={styles.title}>BOX</Text>
-
           {/* request API login */}
           <Pressable
             onPress={() => {
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   loginContainer: {
-    marginTop: 20,
+    marginTop: 40,
     flexDirection: 'row',
     alignItems: 'center',
   },

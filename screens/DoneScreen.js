@@ -10,6 +10,8 @@ import {
 
 //ICON
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const DoneScreen = ({ navigation }) => {
   const animation = useState(new Animated.Value(0))[0];
@@ -36,16 +38,18 @@ const DoneScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Done</Text>
-      <Animated.View style={{ transform: [{ rotate: RotateView }] }}>
+      {/* <Animated.View style={{ transform: [{ rotate: RotateView }] }}> */}
         <Pressable
           onPress={() => navigation.replace('LoginScreen')}
           style={styles.rotate}
         >
           <Text>
-            <MaterialCommunityIcons name="reload" size={70} color="black" />
+            {/* <MaterialCommunityIcons name="reload" size={80} color="#ff9500" /> */}
+            {/* <FontAwesome5 name="backward" size={70} color="black" /> */}
+            <AntDesign name="fastbackward" size={70} color="black" />
           </Text>
         </Pressable>
-      </Animated.View>
+      {/* </Animated.View> */}
     </View>
   );
 };
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
   rotate: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 7,
+    paddingLeft: 4,
     width: 80,
     height: 80,
   },

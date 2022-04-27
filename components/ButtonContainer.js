@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable,ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 import ButtonComponent from './ButtonComponent';
@@ -13,7 +13,8 @@ const ButtonContainer = () => {
   const playlistSeedContext = usePlayListSeedContext();
 
   const [selectedItems, setSelectedItems] = React.useState([]);
-  const hardGenres = [
+
+  const genres = [
     'indie',
     'hip-hop',
     'rock',
@@ -26,10 +27,45 @@ const ButtonContainer = () => {
     'punk',
     'reggae',
     'trance',
-    'trip-hop',
+    'road-trip',
     'r-n-b',
-    'new-age'
+    'new-age',
+
   ];
+//   const longHardGenres = [
+//     'indie',
+//     'hip-hop',
+//     'rock',
+//     'pop',
+//     'mood',
+//     'alternative',
+//     'party',
+//     'classical',
+//     'techno',
+//     'punk',
+//     'reggae',
+//     'trance',
+//     'trip-hop',
+//     'r-n-b',
+//     'new-age',
+//     'dubstep',
+//     'french',
+//     'happy',
+//     'metal',
+//     'romance',
+//     'sad',
+//     'new-release',
+//     'road-trip',
+//     'soul',
+//     'trip-hop',
+//     'ska',
+//     'spanish',
+//     'pop',
+//     'metalcore',
+//     'sondtracks',
+//   ];
+//  let genresToLoop = [];
+
   // SELECTED BUTTONS HANDLER
 
   const selectHandler = (item) => {
@@ -56,29 +92,33 @@ const ButtonContainer = () => {
     return selectedItems.includes(item);
   };
 
+  // addButtons ? genresToLoop = [...longHardGenres] : genresToLoop=[...smallHardGenres]
   return (
-    <View style={styles.buttonContainer}>
-      {hardGenres.length ? (
-        // map through genres array and display them
-        hardGenres.map((genre, key) => {
-          return (
-            <Pressable key={key} onPress={() => selectHandler(genre)}>
-              <TouchableOpacity>
-                <View>
-                  <ButtonComponent
-                    genre={genre}
-                    selected={hasBeenSelected(genre)}
-                  />
-                </View>
-              </TouchableOpacity>
-            </Pressable>
-          );
-        })
-      ) : (
-        <Text>nothing yet</Text>
-      )}
-    </View>
-  );
+    // <ScrollView >
+      // {/* map through genres array and display them */}
+
+      <View style={styles.buttonContainer}>
+
+      {genres.map((genre, key) => {
+        return (
+          <Pressable key={key} onPress={() => selectHandler(genre)}>
+            <TouchableOpacity>
+              <View>
+                <ButtonComponent
+                  genre={genre}
+                  selected={hasBeenSelected(genre)}
+                />
+              </View>
+            </TouchableOpacity>
+          </Pressable>
+        )
+      }
+      )
+      }
+      </View>
+
+    // </ScrollView>
+  )
 };
 
 export default ButtonContainer;

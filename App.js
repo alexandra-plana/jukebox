@@ -3,7 +3,6 @@ import React from 'react';
 // NAVIGATION
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-//SCREENS
 import LoginScreen from './screens/LoginScreen';
 import PlaylistScreen from './screens/PlaylistScreen';
 import ButtonScreen from './screens/ButtonScreen';
