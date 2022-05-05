@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,Button, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -16,31 +16,31 @@ const SliderScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-       <Text style={{fontWeight:'600', fontSize:30}}>Mood</Text>
-    <View style={styles.sliders}>
-      <SliderProvider>
-        <SliderPopular />
-        <SliderEnergy />
-        <SliderDance />
-        <SliderInstrument />
-      </SliderProvider>
-    </View>
-    
-    {/* NAVIGATION */}
-    <View style={styles.navigation}>
+      <Text style={{ fontWeight: '600', fontSize: 30 }}>Mood</Text>
+      <View style={styles.sliders}>
+        <SliderProvider>
+          <SliderPopular />
+          <SliderEnergy />
+          <SliderDance />
+          <SliderInstrument />
+        </SliderProvider>
+      </View>
 
-    <Pressable onPress={()=>{navigation.navigate('ButtonScreen')}} style={styles.arrow}>
-    <AntDesign name="arrowleft" size={24} color="black" />
-    </Pressable>
+      {/* NAVIGATION */}
+      <View style={styles.navigation}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('ButtonScreen');
+          }}
+          style={styles.arrow}
+        >
+          <AntDesign name="arrowleft" size={24} color="black" />
+        </Pressable>
 
-    <Pressable onPress={()=>playListReady()} style={styles.arrow}>
-    <AntDesign name="arrowright" size={24} color="black" />
-    </Pressable>
-
-    </View>
-
-
-
+        <Pressable onPress={() => playListReady()} style={styles.arrow}>
+          <AntDesign name="arrowright" size={24} color="black" />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -48,16 +48,16 @@ const SliderScreen = ({ navigation }) => {
 export default SliderScreen;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    alignItems:'center',
-    justifyContent:'space-between',
-    paddingTop:100,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 100,
   },
-  navigation:{
-    flexDirection:'row',
-    width:'80%',
-    justifyContent:'space-between',
-    paddingBottom:60,
-  }
+  navigation: {
+    flexDirection: 'row',
+    width: '80%',
+    justifyContent: 'space-between',
+    paddingBottom: 60,
+  },
 });

@@ -5,23 +5,14 @@ import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { useAuthContext } from '../context/authContext';
 
-import {CLIENT_ID,REDIRECT_URI} from '@env'
-
-
-// const authData = {
-//   client_id: '3448de32fc284d9d953165c8f73d89c7',
-//   redirectUri: 'exp://192.168.1.153:19000',
-// };
+import { CLIENT_ID, REDIRECT_URI } from '@env';
 
 const authData = {
-  client_id:CLIENT_ID,
-  redirectUri:REDIRECT_URI,
+  client_id: CLIENT_ID,
+  redirectUri: REDIRECT_URI,
 };
 
-// import SpotifyWebApi from '../../client/src';
-// const SpotifyWebApi = require('spotify-web-api-node');
-// const SpotifyApi = new SpotifyWebApi();
-
+//TODO
 WebBrowser.maybeCompleteAuthSession();
 
 // Endpoint
@@ -65,7 +56,6 @@ export default function LoginScreen({ navigation }) {
       }
     }
   }, [response]);
-
 
   return (
     <SafeAreaView>

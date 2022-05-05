@@ -86,6 +86,7 @@ const PlaylistScreen = ({ navigation }) => {
         data={playList}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
       ></FlatList>
 
       <SongModal
@@ -129,7 +130,6 @@ const styles = StyleSheet.create({
   navigation: {
     flexDirection: 'row',
     width: '90%',
-
     paddingBottom: 60,
     justifyContent: 'space-between',
   },

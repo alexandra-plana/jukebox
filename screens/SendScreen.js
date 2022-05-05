@@ -8,18 +8,26 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Pressable
 } from 'react-native';
 import React from 'react';
+
+//CONTEXT
+
 import { useAuthContext } from '../context/authContext';
 import { usePlayListUriContext } from '../context/playlistUriContext';
 
+//API
+
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
+
 
 export default function SendScreen({navigation}) {
   const authContext = useAuthContext();
   const playListUriContext = usePlayListUriContext();
   SpotifyApi.setAccessToken(authContext.Token);
+
   const [input, setInput] = React.useState(null);
 
   const sendPlaylist = () => {
@@ -62,11 +70,12 @@ export default function SendScreen({navigation}) {
               onChangeText={setInput}
               value={input}
               placeholder="playlist name"
+              autoCapitalize='none'
             />
           </View>
 
           <View>
-            <TouchableOpacity onPress={() => sendPlaylist()}>
+            <TouchableOpacity onPress={() =>{ input.length && sendPlaylist()}}>
               <Image
                 style={styles.logo}
                 source={require('../assets/spotify-icon-black.png')}
@@ -108,4 +117,5 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: 'rgb(174,174,178)',
   },
+
 });

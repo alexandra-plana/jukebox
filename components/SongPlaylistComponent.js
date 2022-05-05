@@ -26,7 +26,6 @@ export default SongPlaylistComponent;
 const styles = StyleSheet.create({
   container: {
     height: 65,
-    padding: 10,
     borderRadius: 5,
     marginVertical: 3,
     flexDirection: 'row',
@@ -36,6 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#f2f2f7',
     borderRadius:5,
     maxWidth:'100%',
+    paddingLeft:10,
   },
   textContainer: {
     marginHorizontal: 10,
