@@ -12,8 +12,10 @@ const SongPlaylistComponent = ({ item }) => {
             width: 60,
           }}
         ></Image>
-        <View  style={styles.textContainer}>
-          <Text numberOfLines={1} style={styles.titleText}>{item.name}</Text>
+        <View style={styles.textContainer}>
+          <Text numberOfLines={1} style={styles.titleText}>
+            {item.name}
+          </Text>
           <Text>{item.artists[0].name}</Text>
         </View>
       </View>
@@ -32,10 +34,10 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     overflow: 'hidden',
     flexDirection: 'row',
-    backgroundColor:'#f2f2f7',
-    borderRadius:5,
-    maxWidth:'100%',
-    paddingLeft:10,
+    backgroundColor: '#f2f2f7',
+    borderRadius: 5,
+    maxWidth: '100%',
+    paddingLeft: 10,
   },
   textContainer: {
     marginHorizontal: 10,
@@ -45,6 +47,8 @@ const styles = StyleSheet.create({
   },
   titleImage: {
     flexDirection: 'row',
-    alignItems:'center', 
+    alignItems: 'center',
   },
 });
+
+// a test for github
