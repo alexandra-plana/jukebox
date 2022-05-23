@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
-  Pressable
 } from 'react-native';
 import React from 'react';
 
@@ -22,8 +21,7 @@ import { usePlayListUriContext } from '../context/playlistUriContext';
 const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
 
-
-export default function SendScreen({navigation}) {
+export default function SendScreen({ navigation }) {
   const authContext = useAuthContext();
   const playListUriContext = usePlayListUriContext();
   SpotifyApi.setAccessToken(authContext.Token);
@@ -49,10 +47,9 @@ export default function SendScreen({navigation}) {
         }
       )
       .then(function (id) {
-        setInput(''); //!TODO: clean up 
-        navigation.navigate('DoneScreen')
+        setInput(''); //!TODO: clean up
+        navigation.navigate('DoneScreen');
         return SpotifyApi.addTracksToPlaylist(id, playListUriContext.Uris);
-
       })
       .catch((err) => {
         console.error(err.message);
@@ -70,12 +67,16 @@ export default function SendScreen({navigation}) {
               onChangeText={setInput}
               value={input}
               placeholder="playlist name"
-              autoCapitalize='none'
+              autoCapitalize="none"
             />
           </View>
 
           <View>
-            <TouchableOpacity onPress={() =>{ input.length && sendPlaylist()}}>
+            <TouchableOpacity
+              onPress={() => {
+                input.length && sendPlaylist();
+              }}
+            >
               <Image
                 style={styles.logo}
                 source={require('../assets/spotify-icon-black.png')}
@@ -117,5 +118,4 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: 'rgb(174,174,178)',
   },
-
 });

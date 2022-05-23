@@ -16,9 +16,6 @@ export default function ButtonScreen({ navigation }) {
       <ButtonContainer />
 
       <View style={styles.navigation}>
-        {/* <Pressable onPress={()=>{setAddButtons(true)}}>
-        <AntDesign name="pluscircle" size={50} color='rgb(255, 149, 0)' />
-        </Pressable>  */}
         <Pressable onPress={() => navigation.navigate('SliderScreen')}>
           <AntDesign name="arrowright" size={24} color="black" />
         </Pressable>
@@ -37,12 +34,10 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    // marginHorizontal: 50,
   },
   navigation: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    // justifyContent:'space-between',
     paddingTop: 20,
     paddingBottom: 60,
     width: '80%',

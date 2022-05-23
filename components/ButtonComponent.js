@@ -7,7 +7,7 @@ const ButtonComponent = ({ genre, selected }) => {
       <View style={styles.button}>
         {selected ? (
           <View style={styles.overlay}>
-            <Text style={{color:'white', fontWeight:'bold'}}>{genre}</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>{genre}</Text>
           </View>
         ) : (
           <Text>{genre}</Text>

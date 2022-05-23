@@ -12,7 +12,6 @@ const authData = {
   redirectUri: REDIRECT_URI,
 };
 
-//TODO
 WebBrowser.maybeCompleteAuthSession();
 
 // Endpoint
@@ -38,8 +37,6 @@ export default function LoginScreen({ navigation }) {
         'user-read-recently-played',
         'user-library-read',
       ],
-      // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-      // this must be set to false
       usePKCE: false,
       redirectUri: authData.redirectUri,
       json: true,

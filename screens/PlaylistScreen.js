@@ -24,9 +24,9 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi();
 
 const PlaylistScreen = ({ navigation }) => {
-  const playListSeedContext = usePlayListSeedContext(); // all tracks with full info
-  const playListUriContext = usePlayListUriContext(); // to set track uris
-  const sliderContext = useSliderContext(); // to get slider seeds
+  const playListSeedContext = usePlayListSeedContext();
+  const playListUriContext = usePlayListUriContext();
+  const sliderContext = useSliderContext();
 
   const authContext = useAuthContext();
   SpotifyApi.setAccessToken(authContext.Token);

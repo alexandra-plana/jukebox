@@ -1,17 +1,74 @@
-# Codeworks code reviews
+<!-- ABOUT THE PROJECT -->
 
-This repo is used to do code reviews for entire projects from students.
+## About The Project
 
-## Getting started
+<!-- ![login-img](/assets//readme-img/login.png | width=100) -->
+<img src="./assets/readme-img/login.png" width="100">
+<img src="./assets/readme-img/buttons.png" width="100">
+<img src="./assets/readme-img/sliders.png" width="100">
+<img src="./assets/readme-img/playlist.png" width="100">
+<img src="./assets/readme-img/song.png" width="100">
+<img src="./assets/readme-img/send.png" width="100">
 
-- Make sure you have a linter set up (e.g. [ESLint](https://eslint.org/)), otherwise please add one to your project and lint the code.
-- Check that you have a `.gitignore` file in your repo, otherwise copy the one you find in this repo and add it to your project as a starting point.
-- In case you have already forked this repo in the past, before continuing first delete your fork (any associated pull requests are not deleted, don’t worry).
+## Demo
 
-## How it works
+Check out the [video](https://youtu.be/cMgCdsXk0VM) for a brief overview of the app.
 
-- Once your project is ready, fork this repo and clone the fork on your computer.
-- Copy all the code from your project to that clone (without overwriting its `.git` folder), and include any dotfiles (which are hidden files starting with a dot, typically used for configuration purposes).
-- Commit all your code and push it to your fork.
-- Send a pull request (feel free to add a comment to your PR, in case it’s useful for the reviewer).
-- You will receive a notification on GitHub once the code review is completed.
+### Built With
+
+- [React Native](https://reactnative.dev/)
+- [JavaScript](https://www.javascript.com/)
+- [Expo.dev](https://expo.dev/)
+- [Spotify API](https://developer.spotify.com/)
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+## Installation
+
+- Clone this repo
+
+  ```sh
+  git clone https://github.com/your_username_/Project-Name.git
+  ```
+
+- Install NPM packages
+
+  ```sh
+  npm install
+  ```
+
+- Download the Expo Go app
+
+- Create a developer profile in Spotify Developer
+
+- Create a .env file in in the root folder with the CLIENT_ID and REDIRECT_URI you have set up
+
+  ```js
+  CLIENT_ID = 'YOUR CLIENT ID';
+  REDIRECT_URI = 'REDIRECT_URI';
+  ```
+
+- start
+  ```sh
+  expo start
+  ```
+- scan the QR code
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Alexandra Plana - [LinkedIn](https://www.linkedin.com/in/alexandra-plana/)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+<!-- [login-img]: /assets/readme-img/login.png -->
