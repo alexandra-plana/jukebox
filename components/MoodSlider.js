@@ -6,6 +6,7 @@ import { styles } from './sliders/sliderStyles';
 
 const MoodSlider = ({ mood }) => {
   const sliderContext = useSliderContext();
+  console.log(sliderContext);
   return (
     <View style={styles.container}>
       <Text>{mood}</Text>
@@ -17,9 +18,9 @@ const MoodSlider = ({ mood }) => {
         minimumTrackTintColor="#ff9500"
         maximumTrackTintColor="#000000"
         value={0.5}
-        onValueChange={(value) =>
-          (sliderContext[mood] = parseFloat(value.toFixed(1)))
-        }
+        onValueChange={(value) => {
+          sliderContext[mood] = parseFloat(value.toFixed(1));
+        }}
       />
     </View>
   );

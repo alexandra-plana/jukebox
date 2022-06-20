@@ -1,12 +1,4 @@
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Pressable,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
-// import { Swipeable, Animated } from 'react-native-gesture-handler';
+import { StyleSheet, View, Pressable, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 //CONTEXT
@@ -37,14 +29,13 @@ const PlaylistScreen = ({ navigation }) => {
 
   // GET PLAYLIST FROM API
   React.useEffect(() => {
-    console.log('slidercontextEnergy', sliderContext);
-    console.log('genres', playListSeedContext.Playlist);
+    console.log('slidercontext', sliderContext);
 
     SpotifyApi.getRecommendations({
-      target_energy: Number(sliderContext.Energy),
-      target_danceability: Number(sliderContext.Dance),
-      target_popularity: Number(sliderContext.Popular),
-      target_instrumentalness: Number(sliderContext.Instrument),
+      target_energy: Number(sliderContext.Energy) | 0.5,
+      target_danceability: Number(sliderContext.Dance) | 0.5,
+      target_popularity: Number(sliderContext.Popular) | 0.5,
+      target_instrumentalness: Number(sliderContext.Instrument) | 0.5,
       seed_genres: playListSeedContext.Playlist
         ? playListSeedContext.Playlist.join(',')
         : 'indie', // hardcoded alternative
