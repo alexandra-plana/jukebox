@@ -37,6 +37,9 @@ const PlaylistScreen = ({ navigation }) => {
 
   // GET PLAYLIST FROM API
   React.useEffect(() => {
+    console.log('slidercontextEnergy', sliderContext);
+    console.log('genres', playListSeedContext.Playlist);
+
     SpotifyApi.getRecommendations({
       target_energy: Number(sliderContext.Energy),
       target_danceability: Number(sliderContext.Dance),

@@ -1,13 +1,8 @@
-import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
-//SLIDER COMPONENTS
-import SliderPopular from '../components/sliders/SliderPopular';
-import SliderEnergy from '../components/sliders/SliderEnergy';
-import SliderDance from '../components/sliders/SliderDance';
-import SliderInstrument from '../components/sliders/SliderInstrument';
-import { SliderProvider } from '../context/sliderContext';
+import MoodSlider from '../components/MoodSlider';
 
 const SliderScreen = ({ navigation }) => {
   const playListReady = () => {
@@ -18,12 +13,10 @@ const SliderScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={{ fontWeight: '600', fontSize: 30 }}>Mood</Text>
       <View style={styles.sliders}>
-        <SliderProvider>
-          <SliderPopular />
-          <SliderEnergy />
-          <SliderDance />
-          <SliderInstrument />
-        </SliderProvider>
+        <MoodSlider mood="Popular" />
+        <MoodSlider mood="Energy" />
+        <MoodSlider mood="Dance" />
+        <MoodSlider mood="Instrument" />
       </View>
 
       {/* NAVIGATION */}
